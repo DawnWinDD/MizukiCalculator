@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杂鱼杯-水月计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .calculator {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>积分计算器</h1>
+    <div class="calculator">
+        <!-- 临时招募 -->
+        <div class="section">
+            <label for="sixStarTemp">六星临时招募数量 (每个+50):</label>
+            <input type="number" id="sixStarTemp" min="0" value="0">
+            
+            <label for="fiveStarTemp">五星临时招募数量 (每个+20):</label>
+            <input type="number" id="fiveStarTemp" min="0" value="0">
+
+            <label for="fourStarTemp">四星临时招募数量 (每个+10):</label>
+            <input type="number" id="fourStarTemp" min="0" value="0">
+        </div>
+
+        <!-- 骑士结局 -->
+        <div class="section">
+            <label>骑士结局 (每种结局只能选一次):</label>
+            <input type="checkbox" id="waterEnding"> 骑士 (+450)<br>
+            <input type="checkbox" id="waterMoonEnding"> 水月 (+300)<br>
+            <input type="checkbox" id="mistakeEnding"> 锈锤 (+120)<br>
+            <input type="checkbox" id="coldDisaster"> 寒灾 (+150)<br>
+            <input type="checkbox" id="tombstone"> 墓碑 (+230)<br>
+        </div>
+
+        <!-- 紧急关卡 -->
+        <div class="section">
+            <label>第三层紧急关卡:</label>
+            <input type="checkbox" id="emergencyNest"> 巢穴 (+40)<br>
+            <input type="checkbox" id="darkBefore"> 瞻前顾后 (+40)<br>
+        </div>
+
+        <div class="section">
+            <label>第四层紧急关卡:</label>
+            <input type="checkbox" id="trapMistake"> 领地意识 (+100)<br>
+            <input type="checkbox" id="huntingGrounds"> 狩猎场 (+60)<br>
+            <input type="checkbox" id="gunFuneral"> 铳与秩序 (+40)<br>
+            <input type="checkbox" id="wastelandPark"> 溟痕乐园无漏 (+50)<br>
+        </div>
+
+        <div class="section">
+            <label>第五层紧急关卡:</label>
+            <input type="checkbox" id="failureDream"> 失控 (+120)<br>
+            <input type="checkbox" id="fosterDream"> 育生池 (+90)<br>
+            <input type="checkbox" id="goodDream"> 好梦在何方 (+90)<br>
+            <input type="checkbox" id="remainingArray"> 余烬方阵 (+90)<br>
+            <input type="checkbox" id="machineDisaster"> 机械之灾 (+50)<br>
+        </div>
+
+        <div class="section">
+            <label>第六层紧急关卡:</label>
+            <input type="checkbox" id="waterTorture"> 水火相容 (+150)<br>
+            <input type="checkbox" id="deepMistake"> 深度认知 (+80)<br>
+        </div>
+
+        <div class="section">
+            <label>隐藏关卡:</label>
+            <input type="checkbox" id="supervisorKill"> 监工现场击杀鸭子 (+30)<br>
+
+            <label>真相通关:</label>
+            <input type="radio" id="fakeMistake50" name="fakeMistake" value="50"> 普通通关 (+50)<br>
+            <input type="radio" id="fakeMistake100" name="fakeMistake" value="100"> 无漏通关 (+100)<br>
+
+            <label>跳舞通关:</label>
+            <input type="radio" id="danceClear50" name="danceClear" value="50"> 普通通关 (+50)<br>
+            <input type="radio" id="danceClear100" name="danceClear" value="100"> 箱子全收通关 (+100)<br>
+
+            <input type="checkbox" id="duckHelp"> 鸭本运作 (+80)<br>
+            <input type="checkbox" id="fireMad"> 狂信如火无漏 (+50)<br>
+        </div>
+
+        <!-- 结算时每个藏品 -->
+        <div class="section">
+            <label for="collections">藏品数量 (每个+10):</label>
+            <input type="number" id="collections" min="0" value="0">
+        </div>
+
+        <!-- 击杀鸭子、狗头、熊 -->
+        <div class="section">
+            <label for="duckKill">击杀鸭子数量 (每个+20):</label>
+            <input type="number" id="duckKill" min="0" value="0">
+
+            <label for="dogKill">击杀狗头数量 (每个+20):</label>
+            <input type="number" id="dogKill" min="0" value="0">
+
+            <label for="bearKill">击杀熊数量 (每个+20):</label>
+            <input type="number" id="bearKill" min="0" value="0">
+        </div>
+
+        <!-- 启示 -->
+        <div class="section">
+            <label for="revelation">启示数量 (每个+50):</label>
+            <input type="number" id="revelation" min="0" value="0">
+        </div>
+
+        <!-- 计算按钮 -->
+        <button onclick="calculateScore()">计算得分</button>
+
+        <!-- 显示得分 -->
+        <div class="result" id="result">总得分: 0</div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            // 临时招募分数
+            const sixStarTemp = parseInt(document.getElementById('sixStarTemp').value) * 50;
+            const fiveStarTemp = parseInt(document.getElementById('fiveStarTemp').value) * 20;
+            const fourStarTemp = parseInt(document.getElementById('fourStarTemp').value) * 10;
+            
+            // 骑士结局分数
+            const waterEnding = document.getElementById('waterEnding').checked ? 450 : 0;
+            const waterMoonEnding = document.getElementById('waterMoonEnding').checked ? 300 : 0;
+            const mistakeEnding = document.getElementById('mistakeEnding').checked ? 120 : 0;
+            const coldDisaster = document.getElementById('coldDisaster').checked ? 150 : 0;
+            const tombstone = document.getElementById('tombstone').checked ? 230 : 0;
+
+            // 紧急关卡分数
+            const emergencyNest = document.getElementById('emergencyNest').checked ? 40 : 0;
+            const darkBefore = document.getElementById('darkBefore').checked ? 40 : 0;
+
+            // 第四层紧急关卡
+            const trapMistake = document.getElementById('trapMistake').checked ? 100 : 0;
+            const huntingGrounds = document.getElementById('huntingGrounds').checked ? 60 : 0;
+            const gunFuneral = document.getElementById('gunFuneral').checked ? 40 : 0;
+            const wastelandPark = document.getElementById('wastelandPark').checked ? 50 : 0;
+
+            // 第五层紧急关卡
+            const failureDream = document.getElementById('failureDream').checked ? 120 : 0;
+            const fosterDream = document.getElementById('fosterDream').checked ? 90 : 0;
+            const goodDream = document.getElementById('goodDream').checked ? 90 : 0;
+            const remainingArray = document.getElementById('remainingArray').checked ? 90 : 0;
+            const machineDisaster = document.getElementById('machineDisaster').checked ? 50 : 0;
+
+            // 第六层紧急关卡
+            const waterTorture = document.getElementById('waterTorture').checked ? 150 : 0;
+            const deepMistake = document.getElementById('deepMistake').checked ? 80 : 0;
+
+            // 隐藏关卡
+            const supervisorKill = document.getElementById('supervisorKill').checked ? 30 : 0;
+            const fakeMistake = document.querySelector('input[name="fakeMistake"]:checked') ? parseInt(document.querySelector('input[name="fakeMistake"]:checked').value) : 0;
+            const danceClear = document.querySelector('input[name="danceClear"]:checked') ? parseInt(document.querySelector('input[name="danceClear"]:checked').value) : 0;
+            const duckHelp = document.getElementById('duckHelp').checked ? 80 : 0;
+            const fireMad = document.getElementById('fireMad').checked ? 50 : 0;
+
+            // 其他分数
+            const collections = parseInt(document.getElementById('collections').value) * 10;
+
+            // 击杀鸭子、狗头、熊
+            const duckKill = parseInt(document.getElementById('duckKill').value) * 20;
+            const dogKill = parseInt(document.getElementById('dogKill').value) * 20;
+            const bearKill = parseInt(document.getElementById('bearKill').value) * 20;
+
+            const revelation = parseInt(document.getElementById('revelation').value) * 50;
+
+            // 计算总得分
+            const totalScore = sixStarTemp + fiveStarTemp + fourStarTemp +
+                               waterEnding + waterMoonEnding + mistakeEnding + coldDisaster + tombstone +
+                               emergencyNest + darkBefore +
+                               trapMistake + huntingGrounds + gunFuneral + wastelandPark +
+                               failureDream + fosterDream + goodDream + remainingArray + machineDisaster +
+                               waterTorture + deepMistake +
+                               supervisorKill + fakeMistake + danceClear + duckHelp + fireMad +
+                               collections + duckKill + dogKill + bearKill + revelation;
+
+            // 显示总得分
+            document.getElementById('result').innerText = '总得分: ' + totalScore;
+        }
+    </script>
+
+</body>
+</html>
